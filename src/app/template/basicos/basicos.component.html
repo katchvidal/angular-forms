@@ -3,36 +3,53 @@
 
 <div class="row">
     <div class="col">
-        <form>
+        <form (ngSubmit)="onSubmit()" #f="ngForm" autocomplete="off">
             <!-- Campo de Producto -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-lable"> Producto</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" placeholder="Nombre del Producto" required />
-                    <span class="form-text text-danger"> Debe de ser de Tres Letras </span>
+                    <input type="text" class="form-control" placeholder="Nombre del Producto" [ngModel]="initialForm.nombre" name="nombre" minlength="3" required />
+                    <span class="form-text text-danger" *ngIf="nombreValid()"> Debe de ser de Tres Letras </span>
                 </div>
             </div>
             <!-- Campo de Precio -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-lable"> Precio </label>
                 <div class="col-sm-9">
-                    <input type="number" class="form-control" placeholder="Precio del Producto" required />
-                    <!-- <span class="form-text text-danger"> Debe de ser de Tres Letras </span> -->
+                    <input type="number" class="form-control"  customMin [minimo]="0" placeholder="Precio del Producto" [ngModel]="initialForm.precio" name="precio" min="0" required />
+                    <span class="form-text text-danger" *ngIf="precioValid()"> Precio Minimo debe ser Mayor a 0 </span>
                 </div>
             </div>
             <!-- Campo de Existencias -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-lable"> Existencias </label>
                 <div class="col-sm-9">
-                    <input type="number" class="form-control" placeholder="Existencias del Producto" required />
-                    <!-- <span class="form-text text-danger"> Debe de ser de Tres Letras </span> -->
+                    <input type="number" class="form-control" customMin [minimo]="0" placeholder="Existencias del Producto" [ngModel]="initialForm.existencias" name="existencias" min="0" required />
+                    <span class="form-text text-danger" *ngIf="existenciasValid()"> Precio Minimo debe ser Mayor a 0 </span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary float-end"> Insertar </button>
+                    <button type="submit" class="btn btn-primary float-end" [disabled]="f.invalid" > Insertar </button>
                 </div>
             </div>
         </form>
+    </div>
+</div>
+
+<div class="col">
+    <div class="row">
+        <span> Valid </span>
+        <pre> {{ f.valid }} </pre>
+        <span> Value </span>
+        <pre> {{ f.value | json }} </pre>
+        <span> Pristine </span>
+        <pre> {{ f.pristine | json }} </pre>
+        <span> Touched </span>
+        <pre> {{ f.touched | json }} </pre>
+        <span> CustomDirective Existencias </span>
+        <pre> {{ f.controls['existencias']?.errors | json }} </pre>
+        <span> CustomDirective Precio </span>
+        <pre> {{ f.controls['precio']?.errors | json }} </pre>
     </div>
 </div>
