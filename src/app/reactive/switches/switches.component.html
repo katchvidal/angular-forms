@@ -1,1 +1,60 @@
-<p>switches works!</p>
+<h2> Switches Reactive Form </h2>
+<hr />
+
+
+<form [formGroup]="f" (ngSubmit)="onSubmit()" >
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label"> Genero </label>
+        <div class="col-sm-9">
+
+            <div class="form-check">
+                <input value="M" formControlName="genero" class="form-check-input" type="radio" id="radioMasculino" required>
+                <label class="form-check-label" for="radioMasculino">
+                    Masculino
+                </label>
+            </div>
+            <div class="form-check">
+                <input value="F" formControlName="genero" class="form-check-input" type="radio"  id="radioFemenino" required>
+                <label class="form-check-label" for="radioFemenino">
+                    Femenino
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swithces -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label"> Notificaciones </label>
+        <div class="col-sm-9">
+            <div class="form-check form-switch mt-2">
+                <input formControlName="notificationes" class="form-check-input" type="checkbox" role="switch" id="flexSwitches">
+                <label class="form-check-label" for="flexSwitches">Recibir Notificaciones</label>
+            </div>
+        </div>
+    </div>
+    <!-- Check -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label"> Terminos y Condiciones </label>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input formControlName="condiciones" class="form-check-input mt-2" type="checkbox" id="checkid" required>
+                <label class="form-check-label mt-2" for="checkid">
+                    Terminos y Condiciones
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button class="btn btn-primary float-end" type="submit" [disabled]="f.invalid"> Guardar </button>
+    </div>
+</form>
+
+<span> Valor del Formulario </span>
+<pre> {{f.value | json }} </pre>
+<span> Persona </span>
+<pre> {{ persona | json }} </pre>
+<span> Valido </span>
+<pre> {{f.valid | json }} </pre>
+<span> Terminos y Condiciones </span>
+<pre> {{f.controls['terminos']?.errors | json }} </pre>

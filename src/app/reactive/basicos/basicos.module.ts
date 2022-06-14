@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BasicosRoutingModule } from './basicos-routing.module';
 import { BasicosComponent } from './basicos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,6 +12,8 @@ import { BasicosComponent } from './basicos.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     BasicosRoutingModule
   ]
 })
