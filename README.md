@@ -10,3 +10,8 @@ Aplicacion de Angular donde se maneja la parte de los furmularios fundamentales 
 -   Switches / Checkbox...
 
 ##  Formularios Reactivos
+
+
+---
+
+![Alt text](src/assets/img-readme.png "FRONTEND")
