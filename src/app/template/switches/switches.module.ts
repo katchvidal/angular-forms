@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SwitchesRoutingModule } from './switches-routing.module';
 import { SwitchesComponent } from './switches.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { SwitchesComponent } from './switches.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     SwitchesRoutingModule
   ]
 })

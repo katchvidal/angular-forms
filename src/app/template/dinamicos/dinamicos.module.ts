@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DinamicosRoutingModule } from './dinamicos-routing.module';
 import { DinamicosComponent } from './dinamicos.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { DinamicosComponent } from './dinamicos.component';
     DinamicosComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     DinamicosRoutingModule
   ]
