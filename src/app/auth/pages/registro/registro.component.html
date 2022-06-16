@@ -1,0 +1,75 @@
+<h2> Validaciones Reactivas </h2>
+<hr />
+
+<div class="row">
+    <div class="col">
+        <form autocomplete="off" [formGroup]="f" (ngSubmit)="onSubmit()">
+
+            <!--Nombre-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-lable"> Nombre </label>
+                <div class="col-sm-9">
+                    <input formControlName="nombre" class="form-control" placeholder="Nombre de Usuario" type="text" required>
+                    <span class="form-text text-danger" *ngIf="fieldValid('nombre')"> Debe de ser en Fomarto de Nombre y Apellido</span>
+                </div>
+            </div>
+            <!--Email-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-lable"> Email </label>
+                <div class="col-sm-9">
+                    <input formControlName="email" class="form-control" placeholder="Email de Usuario" type="email">
+                    <!-- <span class="form-text text-danger" *ngIf="emailRequired()"> Neceistamos un email </span>
+                    <span class="form-text text-danger" *ngIf="emailShape()"> Debe ser un email eg: email@correo.com</span>
+                    <span class="form-text text-danger" *ngIf="emailTake()"> Email ya fue Tomado </span> -->
+                    <span class="form-text text-danger" *ngIf="fieldValid('email')"> {{ emailErrorMsg }} </span>
+                </div>
+            </div>
+            <!--Username-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-lable"> Username </label>
+                <div class="col-sm-9">
+                    <input formControlName="username" class="form-control" placeholder="NickName de Usuario" type="text">
+                    <span class="form-text text-danger" *ngIf="fieldValid('username')"> El Username no puede ser Strider </span>
+                </div>
+            </div>
+            <!--Password-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-lable"> Password </label>
+                <div class="col-sm-9">
+                    <input formControlName="password" class="form-control" placeholder="Password de Usuario" type="password">
+                    <span class="form-text text-danger" *ngIf="fieldValid('password')" > Contraseña minimo seis caracteres </span>
+                </div>
+            </div>
+            <!--Confirm Password-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-lable"> Confirm Password </label>
+                <div class="col-sm-9">
+                    <input formControlName="checkpassword" class="form-control" placeholder="Password de Usuario" type="password">
+                    <span class="form-text text-danger" *ngIf="fieldValid('checkpassword')"> ConfirmPassword debe ser igual a Password </span>
+                </div>
+            </div>
+
+            <div class="">
+                <button type="submit" class="btn btn-primary float-end" [disabled]="f.pending" > Registrar Usuario </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<h4> Form Validation </h4>
+<pre> {{ f.valid | json }} </pre>
+<h4> Form Status </h4>
+<pre> {{ f.status | json }} </pre>
+<h4> Form Pending </h4>
+<pre> {{ f.pending | json }} </pre>
+
+<h2> Nombre </h2>
+<pre> {{ f.controls['nombre']?.errors | json }} </pre>
+<h2> Email </h2>
+<pre> {{ f.controls['email']?.errors | json }} </pre>
+<h2> Username </h2>
+<pre> {{ f.controls['username']?.errors | json }} </pre>
+<h2> Password </h2>
+<pre> {{ f.controls['password']?.errors | json }} </pre>
+<h2> Confirm Password </h2>
+<pre> {{ f.controls['checkpassword']?.errors | json }} </pre>
